@@ -50,17 +50,17 @@ Demostrar el flujo EDA básico.
 **4.1.1. Apache kafka:**
 Archivo docker-compose.yml
 
-kafka-bank:
+kafka-EB:
 image: confluentinc/cp-kafka:7.5.0
 Imagen oficial de Docker proporcionada por Confluent que contiene una distribución empaquetada y lista para desplegar de Apache Kafka 
 
-kafdrop-bank:
+kafka-ui-EB:
 Una interfaz web para monitorizar clústeres de Apache Kafka. La herramienta muestra información como brokers, temas, particiones, consumidores (incluido el retardo) y permite ver los mensajes.
 
 **4.1.2. Apache Camel:**
 Archivo docker-compose.yml
 
-camel-credit-demo: Proyecto camel-credit-demo
+integracion-camel: Proyecto integracionCamel
 
 **4.1.3. Credit Scoring Service**
 
