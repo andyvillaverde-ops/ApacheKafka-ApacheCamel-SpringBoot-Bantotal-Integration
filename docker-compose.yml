@@ -1,26 +1,25 @@
 services:
 
-  kafka-bank:
+  kafka-EB:
     image: confluentinc/cp-kafka:7.5.0
-    container_name: kafka-bank
+    container_name: kafka-EB
 
     ports:
       - "9092:9092"
 
     environment:
-
       # KRaft Configuration
       KAFKA_NODE_ID: 1
       KAFKA_PROCESS_ROLES: broker,controller
 
       # Listener configuration
       KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092,CONTROLLER://0.0.0.0:9093
-      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-bank:9092
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka-EB:9092
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,CONTROLLER:PLAINTEXT
 
       # Controller quorum
       KAFKA_CONTROLLER_LISTENER_NAMES: CONTROLLER
-      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@kafka-bank:9093
+      KAFKA_CONTROLLER_QUORUM_VOTERS: 1@kafka-EB:9093
 
       # Single node cluster
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
@@ -32,31 +31,32 @@ services:
 
     restart: unless-stopped
 
-  kafdrop-bank:
-    image: obsidiandynamics/kafdrop
-    container_name: kafdrop-bank
-
-    depends_on:
-      - kafka-bank
+  kafka-ui-EB:
+    image: provectuslabs/kafka-ui:latest
+    container_name: kafka-ui-EB
 
     ports:
-      - "9000:9000"
+      - "8081:8080"
 
     environment:
-      KAFKA_BROKERCONNECT: kafka-bank:9092
-
-    restart: unless-stopped
-
-  camel-credit-demo:
-    build: ./camel-credit-demo
-    container_name: camel-integration
+      - KAFKA_CLUSTERS_0_NAME=local
+      - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka-EB:9092
 
     depends_on:
-      - kafka-bank
-
+      - kafka-EB
+      
+  integracion-camel:
+    build: ./integracionCamel
+    
+    container_name: integracion-camel
+    
+    depends_on:
+      - kafka-EB
+    
     ports:
       - "8080:8080"
-
+    
+    environment:
+      - SPRING_KAFKA_BOOTSTRAP_SERVERS=kafka-bank:9092
+          
     restart: unless-stopped
-
- 

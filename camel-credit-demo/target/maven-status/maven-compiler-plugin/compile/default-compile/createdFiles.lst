@@ -1,8 +1,0 @@
-com\net_peru\credit\routes\TestRoute.class
-com\net_peru\credit\processor\DecisionProcessor.class
-com\net_peru\credit\model\CreditRequest.class
-com\net_peru\credit\routes\CreditRoute.class
-com\net_peru\credit\CamelCreditDemoApplication.class
-com\net_peru\credit\controller\CreditController.class
-com\net_peru\credit\controller\TestController.class
-com\net_peru\credit\processor\ValidationProcessor.class
