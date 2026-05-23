@@ -4,17 +4,17 @@
 
 ## 1. Problema del negocio: ##
 
-### 1.1 Situación actual: ###
+### 1.1. Situación actual: ###
 Los sistemas core bancarios legacy presentan:
 - alto acoplamiento
 - integraciones síncronas frágiles
 - baja escalabilidad
 - dificultad para incorporar nuevos canales digitales
 
-### 1.2. Propuesta
+### 1.1. Propuesta
 Implementar una arquitectura event-driven desacoplada basada en Apache Kafka y Apache Camel para separar decisiones de negocio, integración y procesamiento operacional.
 
-### 1.3. Beneficios
+### 1. 1. Beneficios
 - Resiliencia ante fallas del Core Banking
 - Integración desacoplada
 - Escalabilidad independiente
@@ -45,27 +45,15 @@ La arquitectura permite incorporar nuevos consumidores de eventos sin afectar se
 ### 4.1. Fase 1 Conectividad Core-to-Event Hub (SOAP a Kafka) ###
 Demostrar el flujo EDA básico.
 
-**Componentes:**
+**4.1.1. Componentes:**
 
-**4.1.1. Apache kafka:**
-Archivo docker-compose.yml
+| Categoría | tecnologia | Descripción | Notas tecnicas |
+| :--- | :--- | :--- | :--- |
+| **Integración** | String boot/Apache Camel | Microservicio de integracion de canales a bus de eventos |Archivo docker-compose.yml container_name: kafka-ui-EB |
+| **Bus de eventos** | Apache Kafka | Servicio Kafka que implementa bus de eventos |Archivo docker-compose.yml container_name: kafka-EB Imagen oficial de Docker para kafka container_name: kafka-ui-EB: Una interfaz web para monitorizar clústeres de Apache Kafka |
+| **Servicio de dominio** | String boot/Apache Camel | Microservicio de Scoring de credito |Archivo docker-compose.yml container_name: credit-scoring-service |
 
-kafka-EB:
-image: confluentinc/cp-kafka:7.5.0
-Imagen oficial de Docker proporcionada por Confluent que contiene una distribución empaquetada y lista para desplegar de Apache Kafka 
-
-kafka-ui-EB:
-Una interfaz web para monitorizar clústeres de Apache Kafka. La herramienta muestra información como brokers, temas, particiones, consumidores (incluido el retardo) y permite ver los mensajes.
-
-**4.1.2. Apache Camel:**
-Archivo docker-compose.yml
-integracion-camel: Microservicio de integracion de canales a bus de eventos
-container_name: integracion-camel
-
-**4.1.3. Credit Scoring Service**
-Archivo docker-compose.yml
-credit-scoring-service: Microservicio de Scoring de credito
-container_name: credit-scoring-service
+**4.1.1. Implementación y operacion:**
 
 ### 4.2. Fase 2 Integración bancaria ###
 Agrega Core Banking Adapter 
