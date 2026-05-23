@@ -42,7 +42,7 @@ La arquitectura permite incorporar nuevos consumidores de eventos sin afectar se
 
 
 ## 4. Implementación Incremental ##
-### 4.1. Fase 1 backbone mínimo funcional ###
+### 4.1. Fase 1 Conectividad Core-to-Event Hub (SOAP a Kafka) ###
 Demostrar el flujo EDA básico.
 
 **Componentes:**
@@ -59,23 +59,25 @@ Una interfaz web para monitorizar clústeres de Apache Kafka. La herramienta mue
 
 **4.1.2. Apache Camel:**
 Archivo docker-compose.yml
-
-integracion-camel: Proyecto integracionCamel
+integracion-camel: Microservicio de integracion de canales a bus de eventos
+container_name: integracion-camel
 
 **4.1.3. Credit Scoring Service**
-
-**4.1.4. Decision Service**
-
-
-
-
-**3 camel-credit-demo:**
+Archivo docker-compose.yml
+credit-scoring-service: Microservicio de Scoring de credito
+container_name: credit-scoring-service
 
 ### 4.2. Fase 2 Integración bancaria ###
 Agrega Core Banking Adapter 
+- consume credit.scored
+- publica credit.approved
 - consume credit.approved
 - simule llamada Bantotal
 - publique credit.disbursed
+
+**4.1.4. Decision Service**
+**3 camel-credit-demo:**
+
 
 ### Fase 3 — Notification Service
 Consume eventos finales.
