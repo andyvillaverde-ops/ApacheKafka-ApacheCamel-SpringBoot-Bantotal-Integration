@@ -1,0 +1,143 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.andyvillaverde</groupId>
+  <artifactId>credit-scoring-service</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>credit-scoring-service</name>
+  <description>Microservicio de Dominio de Scoring de Credito</description>
+  
+
+	<dependencyManagement>
+	    <dependencies>
+			<!-- 1. Spring Boot BOM (REQUIRED to define spring-boot-starter version) -->
+	        <dependency>
+	            <groupId>org.springframework.boot</groupId>
+	            <artifactId>spring-boot-dependencies</artifactId>
+	            <version>3.2.5</version> <!-- Match this to your Camel version compatibility -->
+	            <type>pom</type>
+	            <scope>import</scope>
+	        </dependency>
+	
+	        <!-- 2. Camel BOM -->
+	        <dependency>
+	            <groupId>org.apache.camel.springboot</groupId>
+	            <artifactId>camel-spring-boot-bom</artifactId>
+	            <version>4.4.0</version> 
+	            <type>pom</type>
+	            <scope>import</scope>
+	        </dependency>
+	    </dependencies>
+	</dependencyManagement>
+
+	<properties>
+	    <java.version>21</java.version>
+	    <camel.version>4.4.0</camel.version>
+	    <spring-boot.version>3.2.5</spring-boot.version>
+	</properties>
+
+	<dependencies>
+	    <!-- Starter de Camel para Spring Boot -->
+	    <dependency>
+	        <groupId>org.apache.camel.springboot</groupId>
+	        <artifactId>camel-spring-boot-starter</artifactId>
+	    </dependency>
+	    
+	    <!-- Ejemplo: Componente para servicios REST -->
+	    <dependency>
+	        <groupId>org.apache.camel.springboot</groupId>
+	        <artifactId>camel-rest-starter</artifactId>
+	    </dependency>
+	    
+	    <!-- Spring Boot -->
+	    <dependency>
+	        <groupId>org.springframework.boot</groupId>
+	        <artifactId>spring-boot-starter</artifactId>
+	    </dependency>
+
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+	
+	    <!-- REST -->
+	    <dependency>
+	        <groupId>org.apache.camel.springboot</groupId>
+	        <artifactId>camel-servlet-starter</artifactId>
+	        <!--<version>4.6.0</version>-->
+	    </dependency>
+	
+	    <!-- Jackson JSON -->
+	    <dependency>
+	        <groupId>org.apache.camel.springboot</groupId>
+	        <artifactId>camel-jackson-starter</artifactId>
+	        <!--<version>4.6.0</version>-->
+	    </dependency>
+	
+	    <!-- Kafka -->
+	    <dependency>
+	        <groupId>org.apache.camel.springboot</groupId>
+	        <artifactId>camel-kafka-starter</artifactId>
+	        <!--<version>4.6.0</version>-->
+	    </dependency>
+		
+		<dependency>
+		    <groupId>io.hawt</groupId>
+		    <artifactId>hawtio-springboot</artifactId>
+		    <version>4.0.0</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.apache.camel.springboot</groupId>
+		    <artifactId>camel-management-starter</artifactId>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.apache.camel</groupId>
+		    <artifactId>camel-xml-jaxb</artifactId>
+		    <version>${camel.version}</version>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.apache.camel.springboot</groupId>
+		    <artifactId>camel-platform-http-starter</artifactId>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.apache.camel</groupId>
+		    <artifactId>camel-spring-xml</artifactId>
+		    <version>${camel.version}</version>
+		</dependency>
+		
+	</dependencies>
+
+	<build>
+	    <plugins>
+	        <plugin>
+	            <groupId>org.springframework.boot</groupId>
+	            <artifactId>spring-boot-maven-plugin</artifactId>
+	            <version>3.2.5</version> <!-- Match this to your Spring Boot BOM version -->
+	            <executions>
+	                <execution>
+	                    <goals>
+	                        <goal>repackage</goal>
+	                    </goals>
+	                </execution>
+	            </executions>
+	        </plugin>
+	    </plugins>
+	    
+	    
+	    <resources>
+		    <resource>
+		        <directory>src/main/resources</directory>
+		        <includes>
+		            <include>**/*.properties</include>
+		            <include>**/*.yml</include>
+		        </includes>
+		    </resource>
+		</resources>
+	    
+	</build>
+
+  
+</project>

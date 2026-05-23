@@ -1,0 +1,6 @@
+D:\proyectos\arquitectura_camel_kafka\credit-scoring-service\src\main\java\com\andyvillaverde\CreditScoringServiceApplication.java
+D:\proyectos\arquitectura_camel_kafka\credit-scoring-service\src\main\java\com\andyvillaverde\scoring\model\CreditRequestEvent.java
+D:\proyectos\arquitectura_camel_kafka\credit-scoring-service\src\main\java\com\andyvillaverde\scoring\model\CreditScoredEvent.java
+D:\proyectos\arquitectura_camel_kafka\credit-scoring-service\src\main\java\com\andyvillaverde\scoring\processor\CreditScoringProcessor.java
+D:\proyectos\arquitectura_camel_kafka\credit-scoring-service\src\main\java\com\andyvillaverde\scoring\route\CreditScoringRoute.java
+D:\proyectos\arquitectura_camel_kafka\credit-scoring-service\src\main\java\com\andyvillaverde\scoring\service\CreditScoringService.java
