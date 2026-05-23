@@ -58,14 +58,14 @@ kafka-ui-EB:
 Una interfaz web para monitorizar clústeres de Apache Kafka. La herramienta muestra información como brokers, temas, particiones, consumidores (incluido el retardo) y permite ver los mensajes.
 
 **4.1.2. Apache Camel:**
-Archivo docker-compose.yml
-integracion-camel: Microservicio de integracion de canales a bus de eventos
-container_name: integracion-camel
+Archivo docker-compose.yml  
+integracion-camel: Microservicio de integracion de canales a bus de eventos  
+container_name: integracion-camel  
 
 **4.1.3. Credit Scoring Service**
-Archivo docker-compose.yml
-credit-scoring-service: Microservicio de Scoring de credito
-container_name: credit-scoring-service
+Archivo docker-compose.yml  
+credit-scoring-service: Microservicio de Scoring de credito  
+container_name: credit-scoring-service  
 
 ### 4.2. Fase 2 Integración bancaria ###
 Agrega Core Banking Adapter 
