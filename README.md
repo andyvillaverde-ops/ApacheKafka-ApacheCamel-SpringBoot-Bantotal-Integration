@@ -53,7 +53,15 @@ Demostrar el flujo EDA básico.
 | **Bus de eventos** | Apache Kafka | Servicio Kafka que implementa bus de eventos |Archivo docker-compose.yml container_name: kafka-EB Imagen oficial de Docker para kafka container_name: kafka-ui-EB: Una interfaz web para monitorizar clústeres de Apache Kafka |
 | **Servicio de dominio** | String boot/Apache Camel | Microservicio de Scoring de credito |Archivo docker-compose.yml container_name: credit-scoring-service |
 
-**4.1.1. Implementación y operacion:**
+**4.1.2. Implementación:**
+- Instalar docker en el PC  
+- Crear un directorio en el PC, por ejemplo arquitectura_camel_kafka  
+- Descargar los proyectos integracionCamel y credit-scoring-service y ubicarlos dentro del directorio arquitectura_camel_kafka  
+- Desde el cmd ingresar al directorio arquitectura_camel_kafka  
+- Ejecutar el comando docker compose up --build  
+
+**4.1.3. Operacion:**
+
 
 ### 4.2. Fase 2 Integración bancaria ###
 Agrega Core Banking Adapter 
