@@ -62,6 +62,10 @@ Demostrar el flujo EDA básico.
 
 **4.1.3. Operacion:**
 
+integracion-camel: Proyecto integracionCamel
+Ingresar url http://localhost:8080/api/credit/request
+![Imagen proyecto de arquitectura_bus_evento](./soap-ui-new.PNG)
+
 
 ### 4.2. Fase 2 Integración bancaria ###
 Agrega Core Banking Adapter 
