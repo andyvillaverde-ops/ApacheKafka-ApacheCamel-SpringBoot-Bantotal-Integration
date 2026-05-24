@@ -59,13 +59,26 @@ Demostrar el flujo EDA básico.
 - Descargar los proyectos integracionCamel y credit-scoring-service y ubicarlos dentro del directorio arquitectura_camel_kafka  
 - Desde el cmd ingresar al directorio arquitectura_camel_kafka  
 - Ejecutar el comando docker compose up --build  
+- Validar la ejecucion de los contenedores dockers
+![Imagen proyecto de arquitectura_bus_evento](./docker-containers.PNG)
 
 **4.1.3. Operacion:**
 
-integracion-camel: Proyecto integracionCamel
-Ingresar url http://localhost:8080/api/credit/request
+Realizar un request a través de Soap UI
+- Ingresar url http://localhost:8080/api/credit/request
 ![Imagen proyecto de arquitectura_bus_evento](./soap-ui-new.PNG)
+- Llenar los datos del mensaje Customerid=C002
+![Imagen proyecto de arquitectura_bus_evento](./soap-ui-request.PNG)
+- Ejecutar request y validar respuesta
+![Imagen proyecto de arquitectura_bus_evento](./soap-ui-response.PNG)
 
+Validar el viaje de los mensajes a travez de las colas kafka
+- s
+![Imagen proyecto de arquitectura_bus_evento](./kafka-ui.PNG)
+- Revision de flujos en Hawtio
+![Imagen proyecto de arquitectura_bus_evento](./hawtio.PNG)
+
+Integracion-camel: Proyecto integracionCamel
 
 ### 4.2. Fase 2 Integración bancaria ###
 Agrega Core Banking Adapter 
