@@ -33,12 +33,12 @@ La arquitectura permite incorporar nuevos consumidores de eventos sin afectar se
 
 ## 2. Vision de Solución ##
 
-![Imagen proyecto de arquitectura_bus_evento](./vision_solucion.png)
+![Imagen Vision de Solucion](./vision_solucion.png)
 
 
 ## 3. Arquitectura de solución / Arquitectura Lógica ##
 
-![Imagen proyecto de arquitectura_bus_evento](./arquitectura_event_driven.png)
+![Imagen de arquitectura de solucion](./arquitectura_event_driven.png)
 
 
 ## 4. Implementación Incremental ##
@@ -60,25 +60,31 @@ Demostrar el flujo EDA básico.
 - Desde el cmd ingresar al directorio arquitectura_camel_kafka  
 - Ejecutar el comando docker compose up --build  
 - Validar la ejecucion de los contenedores dockers
-![Imagen proyecto de arquitectura_bus_evento](./docker-containers.PNG)
+![Imagen Docker Container](./docker-containers.PNG)
 
 **4.1.3. Operacion:**
 
 Realizar un request a través de Soap UI
 - Ingresar url http://localhost:8080/api/credit/request
-![Imagen proyecto de arquitectura_bus_evento](./soap-ui-new.PNG)
-- Llenar los datos del mensaje Customerid=C002
-![Imagen proyecto de arquitectura_bus_evento](./soap-ui-request.PNG)
+![Imagen Soap UI](./soap-ui-new.PNG)
+- Llenar los datos del mensaje Customerid=C003
+![Imagen Soap UI Request](./soap-ui-request.PNG)
 - Ejecutar request y validar respuesta
-![Imagen proyecto de arquitectura_bus_evento](./soap-ui-response.PNG)
+![Imagen Soap UI response](./soap-ui-response.PNG)
 
-Validar el viaje de los mensajes a travez de las colas kafka
-- s
-![Imagen proyecto de arquitectura_bus_evento](./kafka-ui.PNG)
+Validar el viaje de los mensajes a travez de los Topics kafka
+- Ingresar a kafka UI, ingresar a la siguiente url http://localhost:8081/
+- Luego seleccionar la opcion Topics, se visualizará las Topics creadas
+![Imagen Kafka](./kafka-ui.PNG)
+- Seleccionar el topic credit.requested, luego clic en la pestaña Messages, seleccionamos un mensaje, luego visualizaremos el request almacenado en el topic
+![Imagen Topic credict.request](./kafka-ui_topic_credit-requested.PNG)
+- Seleccionar el topic credit.scored, luego clic en la pestaña Messages, visualizaremos el mensaje publicado del scored, el cual es diferente al request de evaluacion de credito
+![Imagen Topic credit.request](./kafka-ui_topic_credit-scored.PNG)
+
+
 - Revision de flujos en Hawtio
 ![Imagen proyecto de arquitectura_bus_evento](./hawtio.PNG)
 
-Integracion-camel: Proyecto integracionCamel
 
 ### 4.2. Fase 2 Integración bancaria ###
 Agrega Core Banking Adapter 
