@@ -64,7 +64,7 @@ Demostrar el flujo EDA básico.
 
 **4.1.3. Operacion:**
 
-Realizar un request a través de Soap UI
+**Realizar un request a través de Soap UI**
 - Ingresar url http://localhost:8080/api/credit/request
 ![Imagen Soap UI](./soap-ui-new.PNG)
 - Llenar los datos del mensaje Customerid=C003
@@ -72,13 +72,13 @@ Realizar un request a través de Soap UI
 - Ejecutar request y validar respuesta
 ![Imagen Soap UI response](./soap-ui-response.PNG)
 
-Validar el viaje de los mensajes a travez de los Topics kafka
+**Validar el viaje de los mensajes a travez de los Topics kafka**
 - Ingresar a kafka UI, ingresar a la siguiente url http://localhost:8081/
 - Luego seleccionar la opcion Topics, se visualizará las Topics creadas
-![Imagen Kafka](./kafka-ui.PNG)
-- Seleccionar el topic credit.requested, luego clic en la pestaña Messages, seleccionamos un mensaje, luego visualizaremos el request almacenado en el topic
+![Imagen Kafka](./kafka-ui.PNG)  
+- Seleccionar el topic credit.requested, luego clic en la pestaña Messages, seleccionamos un mensaje, luego visualizaremos el request almacenado en el topic, de esta forma verificamos que el request llegó topic requested
 ![Imagen Topic credict.request](./kafka-ui_topic_credit-requested.PNG)
-- Seleccionar el topic credit.scored, luego clic en la pestaña Messages, visualizaremos el mensaje publicado del scored, el cual es diferente al request de evaluacion de credito
+- Seleccionar el topic credit.scored, luego clic en la pestaña Messages, visualizaremos el mensaje publicado del scored, aqui se puede verificar que el mensaje generado es de diferente tipo, el contenido es generado por el microservicio scored
 ![Imagen Topic credit.request](./kafka-ui_topic_credit-scored.PNG)
 
 
