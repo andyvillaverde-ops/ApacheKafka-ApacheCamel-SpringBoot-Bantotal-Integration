@@ -81,10 +81,15 @@ Demostrar el flujo EDA básico.
 - Seleccionar el topic credit.scored, luego clic en la pestaña Messages, visualizaremos el mensaje publicado del scored, aqui se puede verificar que el mensaje generado es de diferente tipo, el contenido es generado por el microservicio scored
 ![Imagen Topic credit.request](./kafka-ui_topic_credit-scored.PNG)
 
-
-- Revision de flujos en Hawtio
-![Imagen proyecto de arquitectura_bus_evento](./hawtio.PNG)
-
+**Revisión de flujos Camel en Hawtio**
+- Ingresar a la consola de Hawtio, ingresar la siguiente URL http://localhost:8080/actuator/hawtio/camel/contexts
+- Seleccionar la opcion de menu Camel
+- En el explorador seleccionar credit-request-route
+- En el lado izquierdo selecciona la pestaña Route Diagram
+- Se va a visualizar el route de forma grafica, asi como las diferentes rutas que puede tomar
+![Imagen de Route de Kafka](./hawtio.PNG)
+- Para  visualizar la cantidad de mensajes que has sido procesados en cada etapa del route, asi como el tiempo que tomó en ser procesado, se debe colocar el cursor sobre el cuadro
+![Imagen de Route de Kafka](./hawtio_estadistica.PNG)
 
 ### 4.2. Fase 2 Integración bancaria ###
 Agrega Core Banking Adapter 
