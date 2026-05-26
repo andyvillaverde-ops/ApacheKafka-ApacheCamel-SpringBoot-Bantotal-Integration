@@ -61,18 +61,17 @@ La arquitectura permite incorporar nuevos consumidores de eventos sin afectar se
 7. Publicacion de resultado en Disbursed
 8. Servicio de mensajeria comunica a clientes
 
-## Enterprise Concepts Applied
-
-- Event-Driven Architecture
-- Enterprise Integration Patterns
-- Loose Coupling
-- Distributed Messaging
-- Fault Tolerance
-- Retry and Redelivery Strategy
-- Dead Letter Queue (DLQ)
-- Horizontal Scalability
-- Asynchronous Processing
-- Concurrent Processing
+## Conceptos Enterprise Aplicados
+- Arquitectura Orientada a Eventos (Event-Driven)
+- Patrones de Integración Empresarial
+- Bajo Acoplamiento
+- Mensajería Distribuida
+- Tolerancia a Fallos
+- Estrategias de Reintento y Reenvío
+- Cola de Mensajes Fallidos (Dead Letter Queue - DLQ)
+- Escalabilidad Horizontal
+- Procesamiento Asíncrono
+- Procesamiento Concurrente
 
 ## 4. Implementación Incremental ##
 ### 4.1. Fase 1 Conectividad Core-to-Event Hub (SOAP a Kafka) ###
