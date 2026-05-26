@@ -4,14 +4,14 @@ Arquitectura de integración enterprise basada en eventos utilizando Apache Kafk
 
 ## Características principales
 
-- Arquitectura Event-Driven
-- Apache Kafka Messaging
-- Apache Camel Integration Routes
+- Arquitectura orientada a eventos
+- Mensajeria distribuida con Apache Kafka
+- Rutas de integración con Apache Camel
 - Dead Letter Queue (DLQ)
-- Retry Policies
-- Concurrent Processing
+- Estrategias de reintento
+- Procesamiento concurrente
 - Consumer Groups
-- Dockerized Environment
+- Entorno Dockerizado
 - Kafka UI + Hawtio Monitoring
 
 ## 1. Problema del negocio: ##
@@ -43,7 +43,7 @@ La arquitectura permite incorporar nuevos consumidores de eventos sin afectar se
 - machine learning
 - omnicanalidad
 
-## 2. Vision de Solución ##
+## 2. Visión de Solución ##
 
 ![Imagen Vision de Solucion](./vision_solucion.png)
 
@@ -53,11 +53,11 @@ La arquitectura permite incorporar nuevos consumidores de eventos sin afectar se
 ![Imagen de arquitectura de solucion](./arquitectura_event_driven.png)
 ## Flujo de Arquitectura
 1. Credit Request recibido via REST API
-2. Validacion y publicacion en Kafka
+2. Validación y publicacion en Kafka
 3. Consumo de Request y publicación de Score
-4. Consumo de Scoring y publicacion de Desicion 
+4. Consumo de Scoring y publicacion de Decisión 
 5. Consumo de Approved y registro en Core Banking 
-6. Api de Core Banking registra reuqest
+6. Api de Core Banking registra request
 7. Publicacion de resultado en Disbursed
 8. Servicio de mensajeria comunica a clientes
 
@@ -79,13 +79,13 @@ Demostrar el flujo EDA básico.
 
 **4.1.1. Componentes:**
 
-| Categoría | tecnologia | Descripción | Notas tecnicas |
+| Categoría | tecnología | Descripción | Notas técnicas |
 | :--- | :--- | :--- | :--- |
 | **Integración** | String boot/Apache Camel | Microservicio de integracion de canales a bus de eventos |Archivo docker-compose.yml container_name: kafka-ui-EB |
 | **Bus de eventos** | Apache Kafka | Servicio Kafka que implementa bus de eventos |Archivo docker-compose.yml container_name: kafka-EB Imagen oficial de Docker para kafka container_name: kafka-ui-EB: Una interfaz web para monitorizar clústeres de Apache Kafka |
 | **Servicio de dominio** | String boot/Apache Camel | Microservicio de Scoring de credito |Archivo docker-compose.yml container_name: credit-scoring-service |
 
-**4.1.2. Implementación:**
+**4.1.2. Quick Start:**
 - Instalar docker en el PC  
 - Crear un directorio en el PC, por ejemplo arquitectura_camel_kafka  
 - Descargar los proyectos integracionCamel y credit-scoring-service y ubicarlos dentro del directorio arquitectura_camel_kafka  
@@ -104,7 +104,7 @@ Demostrar el flujo EDA básico.
 - Ejecutar request y validar respuesta
 ![Imagen Soap UI response](./soap-ui-response.PNG)
 
-**Validar el viaje de los mensajes a travez de los Topics kafka**
+**Validar el viaje de los mensajes a través de los Topics kafka**
 - Ingresar a kafka UI, ingresar a la siguiente url http://localhost:8081/
 - Luego seleccionar la opcion Topics, se visualizará las Topics creadas
 ![Imagen Kafka](./kafka-ui.PNG)  
@@ -132,20 +132,17 @@ Agrega Core Banking Adapter
 - simule llamada Bantotal
 - publique credit.disbursed
 
-**4.1.4. Decision Service**
-**3 camel-credit-demo:**
 
-
-### Fase 3 — Notification Service
+### 4.3. Fase 3 — Notification Service
 Consume eventos finales.
 
-### Fase 4 — Resiliencia
+### 4.4. Fase 4 — Resiliencia
 Agrega:
 - retries
 - DLQ
 - idempotencia
 
-### Fase 5 — Observabilidad
+### 4.5. Fase 5 — Observabilidad
 - correlation-id
 - tracing
 - logs estructurados
