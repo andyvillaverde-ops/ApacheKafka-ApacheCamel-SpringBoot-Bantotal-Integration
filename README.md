@@ -1,6 +1,18 @@
-## Arquitectura de modernización para procesamiento crediticio desacoplado orientada a eventos, diseñada para integrar plataformas digitales con Core Banking legacy minimizando acoplamiento, mejorando resiliencia operacional y habilitando escalabilidad horizontal
+# Enterprise Event-Driven Banking Integration
 
-## Apache Kafka + Apache Camel + Spring Boot + Bantotal Integration ##
+Arquitectura de integración enterprise basada en eventos utilizando Apache Kafka, Apache Camel y Spring Boot para simular procesamiento desacoplado de plataformas core banking.
+
+## Características principales
+
+- Arquitectura Event-Driven
+- Apache Kafka Messaging
+- Apache Camel Integration Routes
+- Dead Letter Queue (DLQ)
+- Retry Policies
+- Concurrent Processing
+- Consumer Groups
+- Dockerized Environment
+- Kafka UI + Hawtio Monitoring
 
 ## 1. Problema del negocio: ##
 
@@ -11,10 +23,10 @@ Los sistemas core bancarios legacy presentan:
 - baja escalabilidad
 - dificultad para incorporar nuevos canales digitales
 
-### 1.1. Propuesta
+### 1.2. Propuesta
 Implementar una arquitectura event-driven desacoplada basada en Apache Kafka y Apache Camel para separar decisiones de negocio, integración y procesamiento operacional.
 
-### 1. 1. Beneficios
+### 1. 3. Beneficios
 - Resiliencia ante fallas del Core Banking
 - Integración desacoplada
 - Escalabilidad independiente
@@ -39,7 +51,28 @@ La arquitectura permite incorporar nuevos consumidores de eventos sin afectar se
 ## 3. Arquitectura de solución / Arquitectura Lógica ##
 
 ![Imagen de arquitectura de solucion](./arquitectura_event_driven.png)
+## Flujo de Arquitectura
+1. Credit Request recibido via REST API
+2. Validacion y publicacion en Kafka
+3. Consumo de Request y publicación de Score
+4. Consumo de Scoring y publicacion de Desicion 
+5. Consumo de Approved y registro en Core Banking 
+6. Api de Core Banking registra reuqest
+7. Publicacion de resultado en Disbursed
+8. Servicio de mensajeria comunica a clientes
 
+## Enterprise Concepts Applied
+
+- Event-Driven Architecture
+- Enterprise Integration Patterns
+- Loose Coupling
+- Distributed Messaging
+- Fault Tolerance
+- Retry and Redelivery Strategy
+- Dead Letter Queue (DLQ)
+- Horizontal Scalability
+- Asynchronous Processing
+- Concurrent Processing
 
 ## 4. Implementación Incremental ##
 ### 4.1. Fase 1 Conectividad Core-to-Event Hub (SOAP a Kafka) ###
@@ -76,7 +109,8 @@ Demostrar el flujo EDA básico.
 - Ingresar a kafka UI, ingresar a la siguiente url http://localhost:8081/
 - Luego seleccionar la opcion Topics, se visualizará las Topics creadas
 ![Imagen Kafka](./kafka-ui.PNG)  
-- Seleccionar el topic credit.requested, luego clic en la pestaña Messages, seleccionamos un mensaje, luego visualizaremos el request almacenado en el topic, de esta forma verificamos que el request llegó topic requested
+- Seleccionar el topic credit.requested, luego clic en la pestaña Messages, seleccionamos un mensaje, luego visualizaremos el request almacenado en el topic, esto valida la recepcion del mensaje en el topic de kafka
+
 ![Imagen Topic credict.request](./kafka-ui_topic_credit-requested.PNG)
 - Seleccionar el topic credit.scored, luego clic en la pestaña Messages, visualizaremos el mensaje publicado del scored, aqui se puede verificar que el mensaje generado es de diferente tipo, el contenido es generado por el microservicio scored
 ![Imagen Topic credit.request](./kafka-ui_topic_credit-scored.PNG)
