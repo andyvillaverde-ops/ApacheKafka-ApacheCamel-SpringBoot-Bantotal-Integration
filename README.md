@@ -1,5 +1,5 @@
 # Enterprise Event-Driven Banking Integration
-
+![Banner Arquitectura](./banner.png)
 Arquitectura de integración enterprise basada en eventos utilizando Apache Kafka, Apache Camel y Spring Boot para simular procesamiento desacoplado de plataformas core banking.
 
 ## Características principales
@@ -52,14 +52,14 @@ La arquitectura permite incorporar nuevos consumidores de eventos sin afectar se
 
 ![Imagen de arquitectura de solucion](./arquitectura_event_driven.png)
 ## Flujo de Arquitectura
-1. Credit Request recibido via REST API
-2. Validación y publicacion en Kafka
-3. Consumo de Request y publicación de Score
-4. Consumo de Scoring y publicacion de Decisión 
-5. Consumo de Approved y registro en Core Banking 
-6. Api de Core Banking registra request
-7. Publicacion de resultado en Disbursed
-8. Servicio de mensajeria comunica a clientes
+1. Recepción de solicitud de crédito vía REST API
+2. Validación funcional y publicación del evento en Kafka
+3. Consumo del evento por el servicio de scoring
+4. Procesamiento asíncrono y publicación del resultado de scoring
+5. Consumo del resultado y generación de decisión crediticia
+6. Integración con Core Banking para registro de operación
+7. Publicación del evento de desembolso
+8. Servicio de notificaciones comunica resultado al cliente
 
 ## Conceptos Enterprise Aplicados
 - Arquitectura Orientada a Eventos (Event-Driven)
@@ -81,7 +81,7 @@ Demostrar el flujo EDA básico.
 
 | Categoría | tecnología | Descripción | Notas técnicas |
 | :--- | :--- | :--- | :--- |
-| **Integración** | String boot/Apache Camel | Microservicio de integracion de canales a bus de eventos |Archivo docker-compose.yml container_name: kafka-ui-EB |
+| **Integración** | Spring boot/Apache Camel | Microservicio de integracion de canales a bus de eventos |Archivo docker-compose.yml container_name: kafka-ui-EB |
 | **Bus de eventos** | Apache Kafka | Servicio Kafka que implementa bus de eventos |Archivo docker-compose.yml container_name: kafka-EB Imagen oficial de Docker para kafka container_name: kafka-ui-EB: Una interfaz web para monitorizar clústeres de Apache Kafka |
 | **Servicio de dominio** | String boot/Apache Camel | Microservicio de Scoring de credito |Archivo docker-compose.yml container_name: credit-scoring-service |
 
@@ -124,13 +124,12 @@ Demostrar el flujo EDA básico.
 - Para  visualizar la cantidad de mensajes que has sido procesados en cada etapa del route, asi como el tiempo que tomó en ser procesado, se debe colocar el cursor sobre el cuadro que se desea analizar
 ![Imagen de Route de Kafka](./hawtio_estadistica.PNG)
 
-### 4.2. Fase 2 Integración bancaria ###
-Agrega Core Banking Adapter 
-- consume credit.scored
-- publica credit.approved
-- consume credit.approved
-- simule llamada Bantotal
-- publique credit.disbursed
+### 4.2. Fase 2 Integración Core Banking ###
+Incorporación de adaptador Core Banking para desacoplar integración legacy.
+- Consumo de eventos credit.scored
+- Generación de eventos credit.approved
+- Simulación de integración Bantotal
+- Publicación de eventos credit.disbursed
 
 
 ### 4.3. Fase 3 — Notification Service
